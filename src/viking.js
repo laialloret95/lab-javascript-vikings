@@ -48,45 +48,42 @@ class War {
     addSaxon(Saxon) {
         this.saxonArmy.push(Saxon);
     }
-    vikingAttack() {
-        let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        console.log(randomSaxon);
-        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        console.log(randomViking);
-        
-        let result = randomSaxon.receiveDamage(randomViking.strength);
-        if (randomSaxon.health <= 0) { this.saxonArmy.splice(randomSaxon,1) }
+    attack(attackersArmy,victimsArmy) {
+        let randomAttackerIndex = Math.floor(Math.random() * attackersArmy.length);
+        let randomAttacker = attackersArmy[randomAttackerIndex];
+
+        let randomVictimIndex = Math.floor(Math.random() * victimsArmy.length);
+        let randomVictim = victimsArmy[randomVictimIndex];
+
+        let result = randomVictim.receiveDamage(randomAttacker.strength);
+        if (randomVictim.health <= 0) { victimsArmy.splice(randomVictimIndex,1) }
         return result;
     }
+    vikingAttack() {
+        return this.attack(this.vikingArmy,this.saxonArmy);   
+    }
     saxonAttack() {
-        let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        console.log(randomSaxon);
-        
-        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        console.log(randomViking);
-
-        let result = randomViking.receiveDamage(randomSaxon.strength);
-        if (randomViking.health <= 0) { this.vikingArmy.splice(this.randomViking,1) }
-        return result;
+        return this.attack(this.saxonArmy,this.vikingArmy);
     }
 }
 
-let ragnar = new Viking('Ragnar',20,2);
-let lagertha = new Viking('Lagertha',20,2);
+// let ragnar = new Viking('Ragnar',20,2);
+// let lagertha = new Viking('Lagertha',20,2);
 
-let ecbert = new Saxon(4,2);
-let floki = new Saxon(4,2);
+// let ecbert = new Saxon(4,2);
+// let floki = new Saxon(4,2);
 
-let newWar = new War();
+// let newWar = new War();
 
-newWar.addViking(ragnar);
-newWar.addViking(lagertha);
+// newWar.addViking(ragnar);
+// newWar.addViking(lagertha);
 
-newWar.addSaxon(ecbert);
-newWar.addSaxon(floki);
+// newWar.addSaxon(ecbert);
+// newWar.addSaxon(floki);
 
-newWar.saxonAttack();
-newWar.vikingAttack();
-newWar.vikingAttack();
-newWar.vikingAttack();
-console.log(newWar.vikingArmy, newWar.saxonArmy);
+// newWar.saxonAttack();
+// //console.log(newWar.vikingArmy, newWar.saxonArmy)
+// newWar.vikingAttack();
+// //console.log(newWar.vikingArmy, newWar.saxonArmy)
+// newWar.vikingAttack();
+// //console.log(newWar.vikingArmy, newWar.saxonArmy)
