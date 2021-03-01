@@ -49,7 +49,7 @@ class War {
         this.saxonArmy.push(Saxon);
     }
     attack(attackersArmy,victimsArmy) {
-        if(attackersArmy.length === 0 || victimsArmy.length === 0) return "The war is already over";
+        if(attackersArmy.length === 0 || victimsArmy.length === 0) return "Not enough soldiers to fight";
 
         let randomAttackerIndex = Math.floor(Math.random() * attackersArmy.length);
         let randomAttacker = attackersArmy[randomAttackerIndex];
