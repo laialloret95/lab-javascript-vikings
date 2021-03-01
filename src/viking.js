@@ -49,6 +49,8 @@ class War {
         this.saxonArmy.push(Saxon);
     }
     attack(attackersArmy,victimsArmy) {
+        if(attackersArmy.length === 0 || victimsArmy.length === 0) return "The war is already over";
+
         let randomAttackerIndex = Math.floor(Math.random() * attackersArmy.length);
         let randomAttacker = attackersArmy[randomAttackerIndex];
 
@@ -64,6 +66,11 @@ class War {
     }
     saxonAttack() {
         return this.attack(this.saxonArmy,this.vikingArmy);
+    }
+    showStatus() {
+        if (this.saxonArmy.length === 0) return "Vikings have won the war of the century!";
+        else if (this.vikingArmy.length === 0) return "Saxons have fought for their lives and survived another day...";
+        else return "Vikings and Saxons are still in the thick of battle.";
     }
 }
 
@@ -82,8 +89,12 @@ class War {
 // newWar.addSaxon(floki);
 
 // newWar.saxonAttack();
-// //console.log(newWar.vikingArmy, newWar.saxonArmy)
+// console.log(newWar.saxonAttack())
 // newWar.vikingAttack();
-// //console.log(newWar.vikingArmy, newWar.saxonArmy)
+// console.log(newWar.vikingAttack())
 // newWar.vikingAttack();
-// //console.log(newWar.vikingArmy, newWar.saxonArmy)
+// console.log(newWar.vikingAttack())
+// newWar.vikingAttack();
+// console.log(newWar.vikingAttack())
+// newWar.showStatus();
+// console.log(newWar.showStatus())
